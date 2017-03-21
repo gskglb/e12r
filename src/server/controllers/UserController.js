@@ -23,5 +23,14 @@ exports.logIn = function(req, res){
 	res.send("Hello");
 };
 
+// Creates user
+exports.logOut = function(req, res){
+	console.log("You are in user controller - log Out");
+	res.send("Hello");
+};
 
-
+// Creates user
+exports.signUp = function(req, res){
+	console.log("You are in user controller - log Sign Up");
+	res.send("Hello");
+};

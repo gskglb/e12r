@@ -1,10 +1,11 @@
+var express = require('express');
+var router = express.Router();
 const userCtrl = require('../controllers/UserController');
 
-module.exports = function(app){
+router.get('/logIn',userCtrl.logIn);
+router.get('/logOut', userCtrl.logOut);
+router.get('/signUp', userCtrl.signUp);
+//router.get('/user/:id', userCtrl.show);
 
-	app.get('/logIn', userCtrl.logIn);
-	app.get('/logOut', userCtrl.logOut);
-	app.get('/signUp', userCtrl.signUp);
-	app.get('/user/:id', userCtrl.show);
+module.exports = router;
 
-};

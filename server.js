@@ -7,6 +7,8 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const hbs = require('express-handlebars');
 const fs = require('fs');
+//const passport = require('passport');
+//const passportConfig = require(path.join(__dirname, 'src' ,'server/config/passport')); 
 
 const app = express();
 
@@ -31,7 +33,7 @@ app.set('views', path.join(__dirname, 'src' ,'server/views'));
 app.set('view engine', 'hbs');
 
 // Connect to database
-require(path.join(__dirname, 'src' ,'server/config/db'));
+//require(path.join(__dirname, 'src' ,'server/config/db'));
 
 // Bootstrap all models to avoid model hasn't been registered error 
 
@@ -41,9 +43,13 @@ fs.readdirSync(models)
   .filter(file => ~file.search(/^[^\.].*\.js$/))
   .forEach(file => require(join(models, file)));
 
+
 // Setup server side routes
-const userRoutes = require(path.join(__dirname, 'src' ,'server/routes/userRoutes'))
-app.use('/user', userRoutes);
+const routes = require(path.join(__dirname, 'src' ,'server/routes'))
+app.use('/be', routes);
+
+// const userRoutes = require(path.join(__dirname, 'src' ,'server/routes/userRoutes'))
+// app.use('/user', userRoutes);
 
 
 // Initialize the app.
